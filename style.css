@@ -1,0 +1,17 @@
+.add-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.collection li {
+  height: 60px;
+}
+
+.edit-btn {
+  margin-right: 10px;
+}
+
+.template {
+  display: none;
+}

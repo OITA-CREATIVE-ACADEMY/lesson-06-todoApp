@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.2/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.5.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.5.2/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="add-task-modal">
+      <span>タスク追加</span>
+      タスク名<input type="text" id="add_task">
+      <button class="add_btn btn btn-primary">Add</button>
+    </div>
+    <h1>タスク一覧だよ</h1>
+    <div id="task-list" class="container"></div>
+
+    <div id="task-dummy" style="display: none">
+      <div class="panel panel-success">
+        <div class="panel-body">
+          <span class="task_name"></span>
+          <button class="done_btn btn btn-warning">Done</button>
+          <button class="edit_btn btn btn-success">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-task-modal">
+        <span>タスク編集</span>
+        タスク名<input type="text" id="add_task">
+        <button class="add_btn btn btn-primary">Done</button>
+        <button class="add_btn btn btn-danger">Delete</button>
+      </div>
+
+    <div class="script-div">
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            
+      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCYbZXelOrc6niLlPOTaphncchIJtnteTc",
+          authDomain: "todoapp-4ab17.firebaseapp.com",
+          databaseURL: "https://todoapp-4ab17.firebaseio.com",
+          projectId: "todoapp-4ab17",
+          storageBucket: "todoapp-4ab17.appspot.com",
+          messagingSenderId: "14501723970"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script src="lib/moment.min.js"></script>
+      <script src="js/script.js"></script>
+    </div>
+  </body>
+</html>

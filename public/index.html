@@ -47,7 +47,7 @@
 
     <div id="task-dummy" style="display: none">
       <div class="panel panel-success">
-        <div class="panel-body">
+        <div class="panel-body task-body">
           <span class="task_name"></span>
           <button class="done_btn btn btn-warning">Done</button>
           <button class="edit_btn btn btn-success">Edit</button>
@@ -57,9 +57,10 @@
 
     <div class="edit-task-modal">
         <span>タスク編集</span>
-        タスク名<input type="text" id="add_task">
-        <button class="add_btn btn btn-primary">Done</button>
-        <button class="add_btn btn btn-danger">Delete</button>
+        <input id="task-id" type="hidden" value="">
+        タスク名<input type="text" id="edit_task">
+        <button class="update_done_btn btn btn-primary">Done</button>
+        <button class="delete_btn btn btn-danger">Delete</button>
       </div>
 
     <div class="script-div">

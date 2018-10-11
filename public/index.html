@@ -42,13 +42,16 @@
       タスク名<input type="text" id="add_task">
       <button class="add_btn btn btn-primary">Add</button>
     </div>
-    <h1>タスク一覧だよ</h1>
+    <h2>タスク一覧だよ</h2>
     <div id="task-list" class="container"></div>
+    <h2>完了したタスク</h2>
+    <div id="comp-task-list" class="container"></div>
 
     <div id="task-dummy" style="display: none">
-      <div class="panel panel-success">
+      <div class="panel panel-success task-panel">
         <div class="panel-body task-body">
           <span class="task_name"></span>
+          <span class="update_at"></span>
           <button class="done_btn btn btn-warning">Done</button>
           <button class="edit_btn btn btn-success">Edit</button>
         </div>

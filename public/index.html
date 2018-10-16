@@ -14,7 +14,7 @@
     <script defer src="/__/firebase/5.5.2/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
-
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
@@ -29,64 +29,99 @@
         body { border-top: 16px solid #ffa100; }
       }
     </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="lib/bootstrap/bs-button-style/bs-button-style.min.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-
-    <div class="add-task-modal">
-      <span>タスク追加</span>
-      タスク名<input type="text" id="add_task">
-      <button class="add_btn btn btn-primary">Add</button>
-    </div>
-    <h2>タスク一覧だよ</h2>
-    <div id="task-list" class="container"></div>
-    <h2>完了したタスク</h2>
-    <div id="comp-task-list" class="container"></div>
-
-    <div id="task-dummy" style="display: none">
-      <div class="panel panel-success task-panel">
-        <div class="panel-body task-body">
-          <span class="task_name"></span>
-          <span class="update_at"></span>
-          <button class="done_btn btn btn-warning">Done</button>
-          <button class="edit_btn btn btn-success">Edit</button>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel"></h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-task-modal">
+                  <input type="text" id="add_task" placeholder="タスク名" style="width:100%">
+                </div>
+                <div class="edit-task-modal">
+                  <input id="task-id" type="hidden" value="">
+                  <input type="text" id="edit_task" placeholder="タスク名" style="width:100%">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="add-task-modal">
+                  <button type="button" class="add_btn btn btn-secondary btn-primary" data-dismiss="modal">ADD</button>
+                </div>
+                <div class="edit-task-modal">
+                  <button class="update_done_btn btn btn-primary" data-dismiss="modal">Done</button>
+                  <button class="delete_btn btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="edit-task-modal">
-        <span>タスク編集</span>
-        <input id="task-id" type="hidden" value="">
-        タスク名<input type="text" id="edit_task">
-        <button class="update_done_btn btn btn-primary">Done</button>
-        <button class="delete_btn btn btn-danger">Delete</button>
+      <div class="container">
+        <div class="page-header">
+          <h2>Todo List</h2>
+        </div>
+        <div id="task-list" class="container"></div>
+        
+        <div class="page-header">
+          <h2>Done List</h2>
+        </div>
+        <div id="comp-task-list" class="container"></div>
+        
+        <div id="task-dummy" style="display: none">
+          <div class="panel panel-success task-panel">
+            <div class="panel-body task-body margin-left-little">
+              <div>
+                <span class="task_name main-text"></span>
+                <div class="pull-right">
+                    <button class="done_btn btn btn-warning">Done</button>
+                    <button class="modal_btn edit_modal btn btn-success">Edit</button>
+                </div>
+              </div>
+              <span class="update_at sub-text"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-btn">
+          <button type="button" class="modal_btn add_modal btn btn-info btn-lg btn-circle">&#43</button>
+        </div>
       </div>
-
-    <div class="script-div">
-      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"></script>
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            
-      <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyCYbZXelOrc6niLlPOTaphncchIJtnteTc",
-          authDomain: "todoapp-4ab17.firebaseapp.com",
-          databaseURL: "https://todoapp-4ab17.firebaseio.com",
-          projectId: "todoapp-4ab17",
-          storageBucket: "todoapp-4ab17.appspot.com",
-          messagingSenderId: "14501723970"
-        };
-        firebase.initializeApp(config);
-      </script>
-      <script src="lib/moment.min.js"></script>
-      <script src="js/script.js"></script>
-    </div>
+      <div class="script-div">
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+              
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCYbZXelOrc6niLlPOTaphncchIJtnteTc",
+            authDomain: "todoapp-4ab17.firebaseapp.com",
+            databaseURL: "https://todoapp-4ab17.firebaseio.com",
+            projectId: "todoapp-4ab17",
+            storageBucket: "todoapp-4ab17.appspot.com",
+            messagingSenderId: "14501723970"
+          };
+          firebase.initializeApp(config);
+        </script>
+        <script src="lib/moment.min.js"></script>
+        <script src="js/script.js"></script>
+      </div>
   </body>
 </html>

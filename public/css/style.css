@@ -1,0 +1,14 @@
+div.container .floating-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+   
+}
+
+.task_name {
+    font-size: 2em;
+}
+
+.margin-left-little {
+    margin-left: 10px;
+}

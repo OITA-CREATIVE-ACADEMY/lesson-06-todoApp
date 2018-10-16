@@ -3,16 +3,48 @@ $(function(){
     var ROOT_PATH = '/tasks/';
     var todoRef = firebase.database().ref(ROOT_PATH);
 
+     // タスク追加のモーダルを出す
+    $('.modal_btn').on('click',function(e) {
+
+        if ($(e.target).hasClass('add_modal')) {
+            $('.add-task-modal').show();
+            $('.edit-task-modal').hide();
+            $('.modal-title').html('タスクを追加する');
+            $('#add_task').focus();
+        } else {
+            $('.edit-task-modal').show();
+            $('.add-task-modal').hide();
+
+            var $target = $(e.target);
+
+            // タスク名取得
+            var taskData = $($target).parents('div.task-body').find('span.task_name');
+            var taskName = taskData.text();
+            var taskId = taskData.data('key');
+            $('#edit_task').val(taskName);
+            $('#task-id').val(taskId);
+            $('#edit_task').focus();
+
+            $('.modal-title').html('タスクを編集する');
+        }
+
+        $('#exampleModal').modal('show');
+    });
+
     /**
      * タスクの追加
      */
     $('.add_btn').on('click',function() {
         // タスク名取得
-        var addTask = $('#add_task').val()
+        var addTask = $('#add_task').val();
+        if (addTask == "") {
+            alert('タスク名を入力してください');
+            return false;
+        }
         // 現在の時刻を取得
-        var date = moment()
-        var formatDate = date.format('YYYY-MM-DD HH:mm')
-        console.log(formatDate)
+        var date = moment();
+        var formatDate = date.format('YYYY-MM-DD HH:mm');
+        console.log(formatDate);
         todoRef.push({
             task: addTask,
             date: formatDate,
@@ -21,10 +53,18 @@ $(function(){
         $('#add_task').val('');
     });
 
+    $('#add_task').keypress(function (e) {
+        if (e.keyCode == 13) {
+            $('.add_btn').click();
+        }
+    });
+
     /**
      * タスクの参照
      */
     todoRef.on('child_added', function (snapshot) {
+        console.log(snapshot);
+        
         var taskData = snapshot.val();
         if (taskData.task) {
             if (!taskData.comp) {
@@ -50,21 +90,14 @@ $(function(){
     /**
      * タスクの変更
      */
-    $('.edit_btn').on('click',function(e) {
-        var $target = $(e.target);
-
-        // タスク名取得
-        var taskData = $($target).parents('div.task-body').find('span.task_name');
-        var taskName = taskData.text();
-        var taskId = taskData.data('key');
-        $('#edit_task').val(taskName);
-        $('#task-id').val(taskId);
-        $('#edit_task').focus();
-    });
 
     $('.update_done_btn').on('click',function(e) {
 
         var taskName = $('#edit_task').val();
+        if (taskName == "") {
+            alert('タスク名を入力してください');
+            return false;
+        }
         var taskId = $('#task-id').val();
 
         // 現在の時刻を取得
@@ -77,7 +110,12 @@ $(function(){
         if (todoRef.update(updates)) {
             $('[data-key=' + taskId + ']').text(taskName);
         }
-      
+    });
+
+    $('#edit_task').keypress(function (e) {
+        if (e.keyCode == 13) {
+            $('.update_done_btn').click();
+        }
     });
 
     /**

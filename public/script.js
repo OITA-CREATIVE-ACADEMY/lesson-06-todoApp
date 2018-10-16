@@ -21,7 +21,8 @@ $(function(){
     var message = snapshot.val();
 console.log(message.name);
     if (message.name) {
-      $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#messagesDiv'));
+      $("<div class='card'><div class='card-body'>"+message.text+"</div></div>").appendTo($('#messagesDiv'));
+    //   $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     }
   });

@@ -14,37 +14,32 @@ $(function(){
       $('#messageInput').val('');
   });
   $('.edit-text').click(function(){
-      
+    const itemKey = $(this).data('key');
+      messagesRef.child(itemKey).update();
   });
-//   messagesRef.on('child_added', function (snapshot) {
-//     var message = snapshot.val();
-// console.log(message.text);
-//     if (message.text) {
-//       $("<div class='card pad'><div class='card-body'>"+message.text+"<button type='button' class='btn btn-secondary' data-dismiss='modal'>編集</button></div></div>").appendTo($('#messagesDiv'));
-//     //   $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#messagesDiv'));
-//       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-//     }
-//   });
-//   $('.comment').click(function(){
-//     var text = $('#messageInput').val();
-//     var now   = moment().format('YYYY-MM-DD HH:mm');
-//     createcard(text,now);
-// });
+  $('.delete-text').click(function(){
+      const itemKey = $(this).data('key');
+      messagesRef.child(itemKey).set(null);
+      $(this).parents('.text-item').remove();
+  });
 
 messagesRef.on('child_added', function (snapshot) {
     var message = snapshot.val();
+    var messageKey = snapshot.key;
 // console.log(message.text);
     if (message.text) {
-      var taskcopy = createcard(message);
+      var taskcopy = createcard(message,messageKey);
       taskcopy.appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     }
   });
 
-  function createcard(message) {
-      console.log(message);
+  function createcard(message,messageKey) {
+      console.log(messageKey);
     var cloneTask = $('#cardDamy').find('div.card').clone(true);
     cloneTask.find('.textMain').text(message.text);
+    cloneTask.find('.delete-text').attr('data-key',messageKey);
+    cloneTask.find('.edit-text').attr('data-key',messageKey);
     return cloneTask;
   }
 });

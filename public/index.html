@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.5.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCzwpLeOffDLwVikEQmLYYMUF4_v4d153I",
+        authDomain: "todolist-998d6.firebaseapp.com",
+        databaseURL: "https://todolist-998d6.firebaseio.com",
+        projectId: "todolist-998d6",
+        storageBucket: "todolist-998d6.appspot.com",
+        messagingSenderId: "1022686143002"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+            <h2>タスク管理</h2>
+            <blockquote>
+              <p>『TO DO LIST』 produce by KAZUKI　</p>
+            </blockquote>
+      </div>
+      <div class="row todo"  id='todoDiv'></div>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal">
+        タスクを追加する
+      </button>
+      <!-- モーダル・ダイアログ -->
+      <div class="modal fade" id="sampleModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+              <h4 class="modal-title">タスク</h4>
+            </div>
+            <div class="modal-body">
+              <input type='text' id='todo' placeholder='TO DO'>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add();">追加</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/javascript.js"></script>
+  </body>
+</html>

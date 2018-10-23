@@ -5,25 +5,46 @@ $(function(){
       })
   $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
-      var name = $('#nameInput').val();//名前取って
-      var text = $('#messageInput').val();//コメント取って
-      messagesRef.push({name:name, text:text});//pushして
-      $('#messageInput').val('');//消す
+      $('.comment').click();
     }
   });
   $('.comment').click(function(){
-    var name = $('#nameInput').val();
       var text = $('#messageInput').val();
-      messagesRef.push({name:name, text:text});
+      messagesRef.push({text:text});
       $('#messageInput').val('');
   });
-  messagesRef.on('child_added', function (snapshot) {
+  $('.edit-text').click(function(){
+      
+  });
+//   messagesRef.on('child_added', function (snapshot) {
+//     var message = snapshot.val();
+// console.log(message.text);
+//     if (message.text) {
+//       $("<div class='card pad'><div class='card-body'>"+message.text+"<button type='button' class='btn btn-secondary' data-dismiss='modal'>編集</button></div></div>").appendTo($('#messagesDiv'));
+//     //   $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#messagesDiv'));
+//       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+//     }
+//   });
+//   $('.comment').click(function(){
+//     var text = $('#messageInput').val();
+//     var now   = moment().format('YYYY-MM-DD HH:mm');
+//     createcard(text,now);
+// });
+
+messagesRef.on('child_added', function (snapshot) {
     var message = snapshot.val();
-console.log(message.name);
-    if (message.name) {
-      $("<div class='card'><div class='card-body'>"+message.text+"</div></div>").appendTo($('#messagesDiv'));
-    //   $('<div/>').text(message.text).prepend($('<em/>').text(message.name+': ')).appendTo($('#messagesDiv'));
+// console.log(message.text);
+    if (message.text) {
+      var taskcopy = createcard(message);
+      taskcopy.appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     }
   });
+
+  function createcard(message) {
+      console.log(message);
+    var cloneTask = $('#cardDamy').find('div.card').clone(true);
+    cloneTask.find('.textMain').text(message.text);
+    return cloneTask;
+  }
 });

@@ -3,20 +3,20 @@ $(function(){
     var ROOT_PATH = '/tasks/';
     var todoRef = firebase.database().ref(ROOT_PATH);
 
-     // タスク追加のモーダルを出す
+     // モーダルを出す
     $('.modal_btn').on('click',function(e) {
 
         if ($(e.target).hasClass('add_modal')) {
+            // 追加のモーダル
             $('.add-task-modal').show();
             $('.edit-task-modal').hide();
             $('.modal-title').html('タスクを追加する');
             $('#add_task').focus();
         } else {
+            // 編集のモーダル
             $('.edit-task-modal').show();
             $('.add-task-modal').hide();
-
             var $target = $(e.target);
-
             // タスク名取得
             var taskData = $($target).parents('div.task-body').find('span.task_name');
             var taskName = taskData.text();
@@ -53,6 +53,7 @@ $(function(){
         $('#add_task').val('');
     });
 
+    // EnterKeyでも追加ができるようにする
     $('#add_task').keypress(function (e) {
         if (e.keyCode == 13) {
             $('.add_btn').click();
@@ -90,7 +91,6 @@ $(function(){
     /**
      * タスクの変更
      */
-
     $('.update_done_btn').on('click',function(e) {
 
         var taskName = $('#edit_task').val();
@@ -101,14 +101,17 @@ $(function(){
         var taskId = $('#task-id').val();
 
         // 現在の時刻を取得
-        var date = moment()
+        var date = moment();
         var formatDate = date.format('YYYY-MM-DD HH:mm')
 
         var updates = {};
         updates[taskId + '/task'] = taskName;
         updates[taskId + '/date'] = formatDate;
         if (todoRef.update(updates)) {
-            $('[data-key=' + taskId + ']').text(taskName);
+            var task = $('[data-key=' + taskId + ']');
+            $(task).text(taskName);
+            var date_dom = $(task).parents('.task-body').find('.update_at')[0];
+            $(date_dom).text(formatDate);
         }
     });
 
@@ -138,9 +141,6 @@ $(function(){
         updates[taskId + '/date'] = formatDate;
         if (todoRef.update(updates)) {
             deletePanel($target);
-            var taskDom = getTaskDom(taskData.text(),taskId,formatDate);
-            taskDom.find('button').remove();
-            $('#comp-task-list').append(taskDom);
         }
         
     });
@@ -152,7 +152,6 @@ $(function(){
         // タスク取得
         var taskName = $('#edit_task').val();
         var taskId = $('#task-id').val();
-
         if(!confirm(taskName + 'を削除してもよろしいですか？')) {
             return false;
         } else {

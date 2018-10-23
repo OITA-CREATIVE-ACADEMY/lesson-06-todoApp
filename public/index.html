@@ -51,11 +51,11 @@
             </div>
             <div class="modal-body">
                 <div class="add-task-modal">
-                  <input type="text" id="add_task" placeholder="タスク名" style="width:100%">
+                  <input type="text" id="add_task" class="form-control" placeholder="タスク名" >
                 </div>
                 <div class="edit-task-modal">
                   <input id="task-id" type="hidden" value="">
-                  <input type="text" id="edit_task" placeholder="タスク名" style="width:100%">
+                  <input type="text" id="edit_task" class="form-control" placeholder="タスク名" >
                 </div>
             </div>
             <div class="modal-footer">
@@ -76,11 +76,6 @@
           <h2>Todo List</h2>
         </div>
         <div id="task-list" class="container"></div>
-        
-        <div class="page-header">
-          <h2>Done List</h2>
-        </div>
-        <div id="comp-task-list" class="container"></div>
         
         <div id="task-dummy" style="display: none">
           <div class="panel panel-success task-panel">
@@ -109,14 +104,15 @@
               
         <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
         <script>
+          // 自分のFirebaseConsoleを見て、適切な値に変更してください。
           // Initialize Firebase
           var config = {
-            apiKey: "AIzaSyCYbZXelOrc6niLlPOTaphncchIJtnteTc",
-            authDomain: "todoapp-4ab17.firebaseapp.com",
-            databaseURL: "https://todoapp-4ab17.firebaseio.com",
-            projectId: "todoapp-4ab17",
-            storageBucket: "todoapp-4ab17.appspot.com",
-            messagingSenderId: "14501723970"
+            apiKey: "自分のAPIキー",
+            authDomain: "自分のドメイン",
+            databaseURL: "自分のデータベースURL",
+            projectId: "自分のプロジェクトID",
+            storageBucket: "自分のストレージバケット",
+            messagingSenderId: "自分のmessagingSenderId"
           };
           firebase.initializeApp(config);
         </script>

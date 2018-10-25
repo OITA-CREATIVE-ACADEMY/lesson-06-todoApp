@@ -43,8 +43,11 @@ function add(){
 /*削除*/
 function del(ele){
   database.child(ele.id).remove();
-
 };
+function del2(){
+  const taskKey= $('#comeId').text();
+  database.child(taskKey).remove();
+}
 function edit(ele){
  console.log("edit押せてるよ");
  console.log(ele);
@@ -76,20 +79,10 @@ function updata(){
  const comeKey = $('#comeId').text();
  console.log(comeKey);
 // json形式でデータを作成
-
-
 var updateData = {};
 updateData[comeKey] = {'name': newTask};
-
 console.log(updateData);
 // 変更内容を保存
 var success = database.update(updateData);
-
-console.log(success);
-// if (success) {
-//     // 変更が成功したらHTMLも変更
-//     var span_task = $('#' + taskId).find('.task_name');
-//     $(span_task).html(editTask);
-// }
-
+console.log(success);//     $(span_task).html(editTask);
 };

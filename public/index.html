@@ -50,23 +50,35 @@
             </blockquote>
       </div>
       <div class="row todo"  id='todoDiv'></div>
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal">
-        タスクを追加する
-      </button>
+      <div class="floating-btn">
+          <button type="button" class="modal_btn add_modal btn btn-info btn-lg btn-circle" data-toggle="modal" data-target="#sampleModal">&#43</button>
+      </div>
       <!-- モーダル・ダイアログ -->
       <div class="modal fade" id="sampleModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-              <h4 class="modal-title">タスク</h4>
+              <button type="button" class="close" data-dismiss="modal" onclick="emp();"><span>×</span></button>
+              <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-              <input type='text' id='todo' placeholder='TO DO'>
+              <div class="modal-add">
+                <input type='text' id='todo-add' placeholder='TO DO'>
+              </div>
+              <div class="modal-edit">
+                <input type='text' id='todo-edit'placeholder='TO DO'>
+                <p id='comeId'></p>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add();">追加</button>
+              <div class="modal-add">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="emp();">閉じる</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="add();emp();">追加</button>
+              </div>
+              <div class="modal-edit">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updata();">完了</button>
+                <button type="button" class="btn btn-danger"" data-dismiss="modal" onclick="emp()">削除</button>
+              </div>
             </div>
           </div>
         </div>

@@ -10,3 +10,7 @@
  height: 4em;
  width: 4em;
 }
+.now{
+    font-size: 80%;
+    opacity: 0.7;
+}

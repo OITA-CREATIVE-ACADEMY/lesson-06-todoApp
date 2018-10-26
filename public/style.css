@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/*! reset.scss Copyright 2014@Tomohiro IKEDA */
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700,700i|Kosugi+Maru");
+html, body, div,
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, dl, dt, dd,
+table, th, td,
+form, fieldset,
+header, section, article, aside, footer, figure,
+figcaption, nav {
+  margin: 0px;
+  padding: 0px; }
+
+article, aside, canvas, details, figcaption, figure,
+footer, header, menu, nav, section, summary {
+  display: block; }
+
+@viewport {
+  width: extend-to-zoom 100%;
+  zoom: 1;
+  user-zoom: zoom; }
+
+img {
+  max-width: 100%; }
+
+input, textarea, select, button {
+  outline: none; }
+
+ul, ol {
+  list-style: none; }
+
+p, li, dt, dd, th, td, pre {
+  -ms-line-break: strict;
+  line-break: strict;
+  -ms-word-break: break-strict;
+  word-break: break-strict; }
+
+img {
+  border: none;
+  vertical-align: middle; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
+h3 {
+  font-size: 28px;
+  margin-bottom: 0.5em; }
+
+a {
+  color: #ffe4ef; }
+
+.displayNone {
+  display: none; }
+
+body {
+  color: #2f406e;
+  font-family: 'Josefin Sans','Kosugi Maru', sans-serif;
+  line-height: 2.6em; }
+
+/* ここからメイン */
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #ffe4ef;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.todo_list {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 160px; }
+
+.entryButton {
+  position: fixed;
+  bottom: 80px;
+  right: 50px;
+  font-size: 70px;
+  z-index: 10000; }
+
+/* ToDoカード */
+.todo_card {
+  margin: 1em 2vw;
+  box-shadow: 0 0 100px 4px rgba(47, 64, 110, 0.1);
+  padding: 2em 1.5em 1em;
+  margin-top: 1em;
+  background-color: #fff;
+  max-width: 900px;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .todo_card:nth-child(2n+1) {
+    margin-left: 2vw;
+    margin-right: auto; }
+  .todo_card input {
+    border: none;
+    border-bottom: 1px solid #2f406e;
+    height: 2em;
+    width: 100%;
+    font-size: 20px; }
+  .todo_card .todo_title {
+    flex-basis: 80%; }
+    .todo_card .todo_title h3 {
+      font-size: 34px; }
+    .todo_card .todo_title h4 {
+      font-size: 20px;
+      padding-right: 1em; }
+  .todo_card .todo_card_buttons {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    order: 2; }
+    .todo_card .todo_card_buttons.row {
+      flex-direction: row;
+      flex-basis: 100%;
+      justify-content: flex-end;
+      width: 100%;
+      margin-right: 0; }
+      .todo_card .todo_card_buttons.row button {
+        width: auto;
+        margin-top: 1em;
+        margin-right: 0; }
+    .todo_card .todo_card_buttons button {
+      display: inline-block;
+      padding: 0.8em 1.2em;
+      font-size: 16px;
+      color: #eaecff;
+      border-radius: 100px;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0.5em;
+      margin-left: 0.2em; }
+  .todo_card .todoDate {
+    flex-basis: 45%;
+    line-height: 2em;
+    margin-top: 1em; }
+
+/* モーダル */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffe4ef;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .modal .todo_card {
+    width: 50vw; }
+
+.closeButton {
+  position: relative;
+  font-size: 70px;
+  margin-top: 1em; }
+
+/* ボタンスタイル */
+.todoButton_delete,
+.todoButton_done {
+  background-color: #ff7eb3; }
+  .todoButton_delete:hover,
+  .todoButton_done:hover {
+    background-color: #ff65a3; }
+
+.todoButton_edit,
+.todoButton_add {
+  background-color: #3e5592; }
+  .todoButton_edit:hover,
+  .todoButton_add:hover {
+    background-color: #2f406e; }
+
+.todoButton_update {
+  background-color: #8490ff; }
+  .todoButton_update:hover {
+    background-color: #5162ff; }

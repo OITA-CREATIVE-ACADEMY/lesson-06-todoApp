@@ -1,0 +1,28 @@
+[debug] [2018-10-11T10:56:01.516Z] ----------------------------------------------------------------------
+[debug] [2018-10-11T10:56:01.517Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-10-11T10:56:01.517Z] CLI Version:   4.2.1
+[debug] [2018-10-11T10:56:01.517Z] Platform:      darwin
+[debug] [2018-10-11T10:56:01.517Z] Node Version:  v8.11.3
+[debug] [2018-10-11T10:56:01.518Z] Time:          Thu Oct 11 2018 19:56:01 GMT+0900 (JST)
+[debug] [2018-10-11T10:56:01.518Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-11T10:56:01.527Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-11T10:56:01.527Z] > authorizing via signed-in user
+[debug] [2018-10-11T10:56:01.529Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-11T10:56:01.529Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-10-11T10:56:01.833Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-11T10:56:01.842Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/todoapp-5007d  
+ 
+[debug] [2018-10-11T10:56:02.560Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-11T10:56:02.561Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/todoapp-5007d  
+ 
+[debug] [2018-10-11T10:56:03.463Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/hab-co. 1/Desktop/練習/OCA/#6/lesson06-toDoApp'...
+[info] 
+[debug] [2018-10-11T10:56:03.465Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/973143086716/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-11T10:56:04.690Z] <<< HTTP RESPONSE 200
+[info] i  hosting[todoapp-5007d]: Serving hosting files from: public
+[info] ✔  hosting[todoapp-5007d]: Local server: http://localhost:5000

@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
-
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.5.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -18,17 +17,14 @@
     crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
-    <script>
+    <link rel="stylesheet" href="css/style.css">
+   <script>
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyCzwpLeOffDLwVikEQmLYYMUF4_v4d153I",
@@ -44,14 +40,14 @@
   <body>
     <div class="container">
       <div class="page-header">
-            <h2>タスク管理</h2>
-            <blockquote>
-              <p>『TO DO LIST』 produce by KAZUKI　</p>
-            </blockquote>
+        <h2>タスク管理</h2>
+        <blockquote>
+          <p>『TO DO LIST』 produce by KAZUKI　</p>
+        </blockquote>
       </div>
       <div class="row todo"  id='todoDiv'></div>
       <div class="floating-btn">
-          <button type="button" class="modal_btn add_modal btn btn-info btn-lg btn-circle" data-toggle="modal" data-target="#sampleModal">&#43</button>
+          <button type="button" class="modal_btn add_modal btn btn-info btn-lg btn-style" data-toggle="modal" data-target="#sampleModal">&#43</button>
       </div>
       <!-- モーダル・ダイアログ -->
       <div class="modal fade" id="sampleModal" tabindex="-1">
@@ -63,11 +59,10 @@
             </div>
             <div class="modal-body">
               <div class="modal-add">
-                <input type='text' id='todo-add' placeholder='TO DO'>
+                <input type='text' id='todo-add' placeholder='タスク名'>
               </div>
               <div class="modal-edit">
-                <input type='text' id='todo-edit'placeholder='TO DO'>
-                <p id='comeId'></p>
+                <input type='text' id='todo-edit'placeholder='タスク名'>
               </div>
             </div>
             <div class="modal-footer">

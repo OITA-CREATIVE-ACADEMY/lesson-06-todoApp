@@ -20,12 +20,14 @@ $(function(){
       messagesRef.push({text:text,time:time});
       $('#messageInput').val('');
   });
-  $('.edit-text').click(function(){
+  // $('.edit-text').click(function(snapshot){
+    $('.edit-text').on('click',function() {
     const itemKey = $(this).data('key');
     $('.edit-btn').show();
     $('.comment').hide();
     var textmain = messagesRef.child(itemKey);
-    console.log($(this));
+    // var textmain = this.closest('.textMain');
+    console.log(textmain);
     $('#messageInput').val(textmain);
     $('#exampleModal').modal('show');
       $('.edit-btn').click(function(){
@@ -53,7 +55,7 @@ $(function(){
   });
   $('.delete-text').click(function(){//カードの削除
       const itemKey = $(this).data('key');
-      messagesRef.child(itemKey).set(null);
+      messagesRef.child(itemKey).remove();
       $(this).parents('.text-item').remove();
   });
 
